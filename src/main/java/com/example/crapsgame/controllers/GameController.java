@@ -17,6 +17,15 @@ public class GameController {
     private Label rollScoreLabel;
 
     @FXML
+    private Label dieScoreLabel;
+
+    @FXML
+    private Label gamesWonLabel;
+
+    @FXML
+    private Label gamesLostLabel;
+
+    @FXML
     private ImageView diceImageView1;
 
     @FXML
@@ -32,6 +41,10 @@ public class GameController {
         nicknameLabel.setText(player.getNickname());
     }
 
+    private int dieScore = 0;
+    private int gamesWon = 0;
+    private int gamesLost = 0;
+
     @FXML
     void onActionPlayButton(ActionEvent event) {
         Dice dice1 = new Dice();
@@ -46,5 +59,8 @@ public class GameController {
                 dice2.getDiceImagePath()
         )));
         this.rollScoreLabel.setText(String.valueOf(rollScore));
+        this.dieScoreLabel.setText(String.valueOf(dieScore));
+        this.gamesWonLabel.setText(String.valueOf(gamesWon));
+        this.gamesLostLabel.setText(String.valueOf(gamesLost));
     }
 }
