@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
         WelcomeView welcomeView = WelcomeView.getInstance();
         welcomeView.show();
 
-        /*
+
         Button button = new Button("Event Test");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -59,7 +59,6 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(vbox, 200, 200);
         stage.setScene(scene);
         stage.show();
-        */
     }
 
     public static void main(String[] args) {
