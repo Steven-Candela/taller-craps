@@ -1,6 +1,7 @@
 package com.example.crapsgame.controllers;
 
 import com.example.crapsgame.models.Dice;
+import com.example.crapsgame.models.Game;
 import com.example.crapsgame.models.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +18,7 @@ public class GameController {
     private Label rollScoreLabel;
 
     @FXML
-    private Label dieScoreLabel;
+    private Label pointLabel;
 
     @FXML
     private Label gamesWonLabel;
@@ -41,7 +42,7 @@ public class GameController {
         nicknameLabel.setText(player.getNickname());
     }
 
-    private int dieScore = 0;
+    private Game game = new Game();
     private int gamesWon = 0;
     private int gamesLost = 0;
 
@@ -58,9 +59,24 @@ public class GameController {
         this.diceImageView2.setImage(new Image(getClass().getResourceAsStream(
                 dice2.getDiceImagePath()
         )));
+
+        Game.GameStatus result = game.play(rollScore);
+
+        if (result == Game.GameStatus.WIN){
+            gamesWon++;
+        } else if (result == Game.GameStatus.LOSE){
+            gamesLost++;
+        }
+
+        if (game.isFirstRoll()) {
+            this.pointLabel.setText("-");
+        } else {
+            this.pointLabel.setText(String.valueOf(game.getPoint()));
+        }
+
         this.rollScoreLabel.setText(String.valueOf(rollScore));
-        this.dieScoreLabel.setText(String.valueOf(dieScore));
         this.gamesWonLabel.setText(String.valueOf(gamesWon));
         this.gamesLostLabel.setText(String.valueOf(gamesLost));
     }
 }
+
